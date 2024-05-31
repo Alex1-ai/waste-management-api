@@ -1,0 +1,9 @@
+POST http://localhost:8000/api/auth/register/
+Content-Type: application/json
+Authorization:
+
+{
+  "contact": "string",
+  "location": "string",
+  "take_out_date": "2024-05-31"
+}
