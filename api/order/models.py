@@ -6,6 +6,7 @@ class Trash(models.Model):
     contact = models.CharField(max_length=14)
     location = models.CharField(max_length=250)
     take_out_date = models.DateField()
+    is_delivered = models.BooleanField(default=False)
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
 
