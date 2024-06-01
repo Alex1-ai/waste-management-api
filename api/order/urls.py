@@ -10,5 +10,6 @@ from .import views
 
 urlpatterns = [
     path('', views.TrashListCreateView.as_view(), name="trash_take_out"),
+    path('<int:pk>/', views.TrashDetailView.as_view(), name='trash-detail'),
     # path('candidate/', views.CandidateViewSet)
 ]

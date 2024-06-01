@@ -13,6 +13,7 @@ class TrashListCreateView(generics.ListCreateAPIView):
     def get_queryset(self):
         return Trash.objects.filter(user=self.request.user)
 
+
     def perform_create(self, serializer):
         trash_instance = serializer.save(user=self.request.user)
         # Send email notification to the admin
@@ -30,6 +31,7 @@ class TrashListCreateView(generics.ListCreateAPIView):
                 'email_subject': subject}
 
         Util.send_email(data)
+
 
 
 

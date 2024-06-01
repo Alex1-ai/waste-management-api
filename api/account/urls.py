@@ -9,6 +9,7 @@ from rest_framework_simplejwt.views import TokenRefreshView
 # router.register(r"", views.UserViewSet)
 
 urlpatterns = [
+    path('me/', views.CurrentUserView.as_view(), name='me'),
     path('register/', views.RegisterView.as_view(), name='register'),
     path('login/', views.LoginAPIView.as_view(), name='login'),
     path('logout/', views.LogoutAPIView.as_view(), name='logout'),

@@ -7,6 +7,10 @@ from .models import User
 from .utils import Util
 from django.urls import reverse
 import jwt
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.views import APIView
+from .serializers import UserSerializer
+
 
 # from mug_api import settings
 from django.conf import settings
@@ -201,6 +205,20 @@ class LogoutAPIView(generics.GenericAPIView):
          serializer.save()
 
          return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+class CurrentUserView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        # Get the authenticated user
+        user = request.user
+        # Serialize the user data
+        serializer = UserSerializer(user)
+        # Return the serialized user data in the response
+        return Response(serializer.data)
+
 
 class AuthUserAPIView(generics.GenericAPIView):
     permission_classes =(permissions.IsAuthenticated,)
